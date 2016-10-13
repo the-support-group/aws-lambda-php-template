@@ -2,43 +2,23 @@
 
 PWD=pwd
 
-yum install -y libexif-devel libjpeg-devel gd-devel curl-devel openssl-devel libxml2-devel
-
 cd /tmp
-wget http://ro1.php.net/get/php-5.6.5.tar.gz/from/this/mirror -O php-5.6.5.tar.gz
-rm -rf php-5.6.5/
-tar zxvf php-5.6.5.tar.gz
+wget http://uk1.php.net/distributions/php-7.0.11.tar.gz
+rm -rf php-7.0.11/
+tar zxvf 7.0.11.tar.gz
 
-cd php-5.6.5/
+cd 7.0.11/
 
-./configure --prefix=/tmp/php-5.6.5/compiled/	\
-	--without-pear	\
-	--enable-shared=no	\
-	--enable-static=yes	\
-	--enable-phar	\
-	--enable-json	\
-	\
-	--disable-all	\
-	--with-openssl	\
-	--with-curl	\
-	\
-	--enable-libxml	\
-	--enable-simplexml	\
-	--enable-xml	\
-	\
-	--with-mhash	\
-	\
-	--with-gd	\
-	--enable-exif	\
-	--with-freetype-dir	\
-	\
-	--enable-mbstring	\
-	\
-	--enable-sockets
+./configure --disable-all \
+	--without-pear \
+	--enable-pdo \
+	--enable-intl \
+	--enable-mbstring \
+	--with-mysqli=mysqlnd \
+	--with-pdo-mysql=mysqlnd \
+	--with-icu-dir=/usr/local/opt/icu4c
 
 make
 make install 
 
 cd $PWD
-
-
