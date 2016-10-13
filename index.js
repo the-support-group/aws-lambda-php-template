@@ -1,4 +1,4 @@
-// For development/testing purposes
+"use strict";
 
 var spawn = require('child_process').spawn
 var stream = require('stream')
@@ -10,10 +10,6 @@ exports.handler = function( event, context ) {
 	php.stdin.write(JSON.stringify(event) + "\n")
 	php.stdin.end()
 
-	//php.stdout.pipe(process.stdout);
-	
-	
-
 	php.stdout.on('data', function (data) {
 		console.log( data.toString() );
 	});
@@ -22,16 +18,9 @@ exports.handler = function( event, context ) {
 		console.log( data.toString() );
 	});
 
-//var readable = new stream.Readable();
-//readable._read = function noop() {}; // See note below
-//readable.push('test me!');
-//readable.push(null);
-//readable.pipe(php.stdin)
-
 	php.on('exit', function (code) {
   		console.log('child process exited with code ' + code);
 		context.done()
 	});
-
 }
 
