@@ -14,6 +14,7 @@ cd 7.0.11/
 	--enable-pdo \
 	--enable-intl \
 	--enable-mbstring \
+	--enable-json \
 	--with-mysqli=mysqlnd \
 	--with-pdo-mysql=mysqlnd \
 	--with-icu-dir=/usr/local/opt/icu4c
